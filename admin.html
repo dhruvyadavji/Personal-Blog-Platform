@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Add New Post</h1>
+    <form method="POST" action="{{ url_for('admin') }}">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br>
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content" required></textarea><br>
+        <label for="publication_date">Publication Date:</label><br>
+        <input type="date" id="publication_date" name="publication_date" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <h2>Delete Posts</h2>
+    <ul>
+        {% for post in posts %}
+            <li>
+                {{ post.title }}
+                <a href="{{ url_for('delete_post', id=post.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Back to Homepage</a>
+</body>
+</html>
