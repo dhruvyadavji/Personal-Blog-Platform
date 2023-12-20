@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Homepage</title>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <ul>
+        {% for post in posts %}
+            <li><a href="{{ url_for('view_post', id=post.id) }}">{{ post.title }}</a></li>
+            <p>{{ post.content[:50] }}</p> <!-- Displaying a short description -->
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('admin') }}">Admin</a>
+</body>
+</html>
